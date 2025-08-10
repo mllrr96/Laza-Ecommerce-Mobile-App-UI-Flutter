@@ -31,10 +31,6 @@ jobs:
         run: |
           flutter pub get
 
-      - name: Generate Code
-        run: |
-          dart run build_runner build -d
-
       - name: Build APK
         run: |
           flutter build apk --release --build-number=4
