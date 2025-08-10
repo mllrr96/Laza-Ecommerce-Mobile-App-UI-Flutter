@@ -51,15 +51,33 @@ class SignInScreen extends StatelessWidget {
                           child: SignInButton(Buttons.facebook, onPressed: () {
                             Navigator.pushAndRemoveUntil(
                                 context,
-                                MaterialPageRoute(builder: (context) => const Dashboard()),
+                                MaterialPageRoute(
+                                    builder: (context) => const Dashboard()),
                                 (Route<dynamic> route) => false);
                           })),
                       const SizedBox(height: 10),
                       SizedBox(
-                          width: double.infinity, height: 50, child: SignInButton(Buttons.twitter, onPressed: () {})),
+                          width: double.infinity,
+                          height: 50,
+                          child: SignInButton(Buttons.twitter, onPressed: () {
+                            Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const Dashboard()),
+                                (Route<dynamic> route) => false);
+                          })),
                       const SizedBox(height: 10),
                       SizedBox(
-                          width: double.infinity, height: 50, child: SignInButton(Buttons.googleDark, onPressed: () {})),
+                          width: double.infinity,
+                          height: 50,
+                          child:
+                              SignInButton(Buttons.googleDark, onPressed: () {
+                            Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const Dashboard()),
+                                (Route<dynamic> route) => false);
+                          })),
                       const SizedBox(height: 10),
                       SizedBox(
                           width: double.infinity,
@@ -68,7 +86,9 @@ class SignInScreen extends StatelessWidget {
                             Buttons.email,
                             onPressed: () => Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => const SignInWithEmail()),
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const SignInWithEmail()),
                             ),
                           )),
                     ],
