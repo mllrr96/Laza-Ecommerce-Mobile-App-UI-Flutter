@@ -8,7 +8,8 @@ import 'components/colors.dart';
 
 class AppTheme {
   static final lightTheme = ThemeData(
-    colorScheme: ColorScheme.fromSeed(seedColor: ColorConstant.primary, surfaceTint: Colors.white),
+    colorScheme: ColorScheme.fromSeed(
+        seedColor: ColorConstant.primary, surfaceTint: Colors.white),
     useMaterial3: true,
     scaffoldBackgroundColor: Colors.white,
     textTheme: GoogleFonts.interTextTheme().copyWith(
@@ -28,7 +29,8 @@ class AppTheme {
         systemNavigationBarColor: Colors.white,
       ),
     ),
-    dialogTheme: const DialogTheme(surfaceTintColor: Colors.white, backgroundColor: Colors.white),
+    dialogTheme: const DialogThemeData(
+        surfaceTintColor: Colors.white, backgroundColor: Colors.white),
     listTileTheme: ListTileThemeData(
       titleTextStyle: bodyMedium.copyWith(fontWeight: FontWeight.normal),
     ),
@@ -62,7 +64,8 @@ class AppTheme {
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       backgroundColor: Color(0xff29363D),
     ),
-    dialogTheme: const DialogTheme(surfaceTintColor: Colors.white, backgroundColor: Colors.white),
+    dialogTheme: const DialogThemeData(
+        surfaceTintColor: Colors.white, backgroundColor: Colors.white),
     listTileTheme: ListTileThemeData(
       titleTextStyle: bodyMedium.dark().copyWith(fontWeight: FontWeight.normal),
       iconColor: Colors.white,
@@ -76,26 +79,33 @@ class AppTheme {
 
   // Headline 1
   // 34px Bold
-  static const headlineLarge = TextStyle(fontSize: 34, fontWeight: FontWeight.bold, color: Colors.black);
+  static const headlineLarge =
+      TextStyle(fontSize: 34, fontWeight: FontWeight.bold, color: Colors.black);
 
   // Headline 2
   // 28px Semi-bold
-  static const headlineMedium = TextStyle(fontSize: 28, fontWeight: FontWeight.w600, color: Colors.black);
+  static const headlineMedium =
+      TextStyle(fontSize: 28, fontWeight: FontWeight.w600, color: Colors.black);
+
   // Headline 3
   // 22px Medium
-  static const headlineSmall = TextStyle(fontSize: 22, fontWeight: FontWeight.w500, color: Colors.black);
+  static const headlineSmall =
+      TextStyle(fontSize: 22, fontWeight: FontWeight.w500, color: Colors.black);
 
   // Body 1
   // 17px Medium
-  static const bodyLarge = TextStyle(fontSize: 17, fontWeight: FontWeight.normal, color: Colors.black);
+  static const bodyLarge = TextStyle(
+      fontSize: 17, fontWeight: FontWeight.normal, color: Colors.black);
 
   // Body 2
   // 15px Medium
-  static const bodyMedium = TextStyle(fontSize: 15, fontWeight: FontWeight.normal, color: Colors.black);
+  static const bodyMedium = TextStyle(
+      fontSize: 15, fontWeight: FontWeight.normal, color: Colors.black);
 
   // Body 3
   // 13px Medium
-  static const bodySmall = TextStyle(fontSize: 13, fontWeight: FontWeight.normal, color: Colors.black);
+  static const bodySmall = TextStyle(
+      fontSize: 13, fontWeight: FontWeight.normal, color: Colors.black);
 }
 
 // A theme notifier to change and save theme mode (light/dark)
@@ -111,18 +121,18 @@ class ThemeNotifier extends ChangeNotifier {
     loadFromPrefs();
   }
 
-  toggleTheme(ThemeMode themeMode) async {
+  Future<void> toggleTheme(ThemeMode themeMode) async {
     await _initPrefs();
     prefs?.setString(key, themeMode.name);
     _themeMode = themeMode;
     notifyListeners();
   }
 
-  _initPrefs() async {
+  Future<void> _initPrefs() async {
     prefs ??= await SharedPreferences.getInstance();
   }
 
-  loadFromPrefs() async {
+  Future<void> loadFromPrefs() async {
     await _initPrefs();
 
     switch (prefs?.getString(key)) {

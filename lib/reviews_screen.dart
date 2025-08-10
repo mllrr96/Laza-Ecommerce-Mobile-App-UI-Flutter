@@ -56,8 +56,8 @@ class ReviewsScreen extends StatelessWidget {
                           ),
                           FilledButton(
                             style: ButtonStyle(
-                              padding: MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.symmetric(horizontal: 10.0)),
-                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                              padding: WidgetStateProperty.all<EdgeInsets>(const EdgeInsets.symmetric(horizontal: 10.0)),
+                              shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                                 const RoundedRectangleBorder(
                                   borderRadius: BorderRadius.all(Radius.circular(5.0)),
                                 ),

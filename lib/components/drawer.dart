@@ -184,7 +184,7 @@ class DrawerWidget extends StatelessWidget {
                       isDestructiveAction: true,
                       okLabel: 'Logout',
                     ).then((result) {
-                      if (result == OkCancelResult.ok) {
+                      if (result == OkCancelResult.ok && context.mounted) {
                         Navigator.pushAndRemoveUntil(
                             context,
                             MaterialPageRoute(builder: (context) => const IntroductionScreen()),
