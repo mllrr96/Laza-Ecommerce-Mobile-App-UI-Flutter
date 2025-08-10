@@ -11,11 +11,39 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
+
+      - name: Cache Flutter dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.pub-cache
+          key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pub-
+
+      - name: Cache Gradle dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Cache CocoaPods dependencies
+        uses: actions/cache@v3
+        with:
+          path: ios/Pods
+          key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pods-
+
       - uses: subosito/flutter-action@v2
         with:
           channel: "stable"
           architecture: x64
           flutter-version: '3.32.5'
+          cache: true
 
       - name: Setup Java
         continue-on-error: true
@@ -51,10 +79,10 @@ jobs:
       - name: Rename APK Files
         run: |
           cd build/app/outputs/flutter-apk
-          mv app-armeabi-v7a-release.apk Ecommerce-UI-Kit-${GITHUB_REF_NAME}-armeabi-v7a.apk
-          mv app-arm64-v8a-release.apk Ecommerce-UI-Kit-${GITHUB_REF_NAME}-arm64-v8a.apk
-          mv app-x86_64-release.apk Ecommerce-UI-Kit-${GITHUB_REF_NAME}-x86_64.apk
-          mv app-release.apk Ecommerce-UI-Kit-${GITHUB_REF_NAME}-universal.apk
+          mv app-armeabi-v7a-release.apk Laza-Ecommerce-${GITHUB_REF_NAME}-armeabi-v7a.apk
+          mv app-arm64-v8a-release.apk Laza-Ecommerce-${GITHUB_REF_NAME}-arm64-v8a.apk
+          mv app-x86_64-release.apk Laza-Ecommerce-${GITHUB_REF_NAME}-x86_64.apk
+          mv app-release.apk Laza-Ecommerce-${GITHUB_REF_NAME}-universal.apk
 
       - name: Create Release
         uses: ncipollo/release-action@v1.13.0
