@@ -2,6 +2,12 @@
 
 Welcome to Laza, the stylish e-commerce app built using Flutter that draws inspiration from [Abid Akram](https://www.figma.com/@abidakram01) Figma desgin [link](https://www.figma.com/community/file/1245385141730558466). Laza combines the aesthetics of Figma's design principles with the functionality of a powerful e-commerce platform. This readme will provide an overview of the app, its features, and how to get started.
 
+**Download:**
+
+[<img src="https://github.com/user-attachments/assets/a50513b3-dbf8-48c1-bff8-1f4215fefbb9"
+alt="Get it on GitHub"
+height="80">](https://github.com/mllrr96/Laza-Ecommerce-Mobile-App-UI-Flutter/releases)
+
 ![Alt text](/screenshots/laza-screenshot.png?raw=true)
 
 ## Features
